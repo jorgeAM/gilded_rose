@@ -4,12 +4,23 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+
+	"github.com/jorgeAM/gilded_rose/src"
 )
 
 func main() {
 	fmt.Println("OMGHAI!")
 
-	var items = []*Item{
+	t := &src.AgeBrieItem{
+		src.BaseItem{"+5 Dexterity Vest", 10, 20},
+	}
+
+	fmt.Println(t)
+
+	t.Update()
+	fmt.Println(t)
+
+	var items = []*src.Item{
 		{"+5 Dexterity Vest", 10, 20},
 		{"Aged Brie", 2, 0},
 		{"Elixir of the Mongoose", 5, 7},
@@ -23,6 +34,7 @@ func main() {
 
 	days := 2
 	var err error
+
 	if len(os.Args) > 1 {
 		days, err = strconv.Atoi(os.Args[1])
 		if err != nil {
@@ -39,6 +51,6 @@ func main() {
 			fmt.Println(items[i])
 		}
 		fmt.Println("")
-		UpdateQuality(items)
+		src.UpdateQuality(items)
 	}
 }
