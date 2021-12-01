@@ -3,7 +3,11 @@ package src
 import "fmt"
 
 type SulfurasItem struct {
-	BaseItem
+	*Item
+}
+
+func NewSulfurasItem(item *Item) *SulfurasItem {
+	return &SulfurasItem{item}
 }
 
 func (i *SulfurasItem) Update() {

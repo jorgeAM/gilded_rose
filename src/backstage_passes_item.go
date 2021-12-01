@@ -1,7 +1,11 @@
 package src
 
 type BackstagePassesItem struct {
-	BaseItem
+	*Item
+}
+
+func NewBackstagePassesItem(item *Item) *BackstagePassesItem {
+	return &BackstagePassesItem{item}
 }
 
 func (i *BackstagePassesItem) Update() {

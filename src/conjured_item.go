@@ -1,7 +1,11 @@
 package src
 
 type ConjuredItem struct {
-	BaseItem
+	*Item
+}
+
+func NewConjuredItem(item *Item) *ConjuredItem {
+	return &ConjuredItem{item}
 }
 
 func (i *ConjuredItem) Update() {

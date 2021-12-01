@@ -1,8 +1,11 @@
 package src
 
 type BaseItem struct {
-	Name            string
-	SellIn, Quality int
+	*Item
+}
+
+func NewBaseItem(item *Item) *BaseItem {
+	return &BaseItem{item}
 }
 
 func (i *BaseItem) Update() {

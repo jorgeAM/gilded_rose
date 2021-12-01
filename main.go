@@ -11,15 +11,6 @@ import (
 func main() {
 	fmt.Println("OMGHAI!")
 
-	t := &src.AgeBrieItem{
-		src.BaseItem{"+5 Dexterity Vest", 10, 20},
-	}
-
-	fmt.Println(t)
-
-	t.Update()
-	fmt.Println(t)
-
 	var items = []*src.Item{
 		{"+5 Dexterity Vest", 10, 20},
 		{"Aged Brie", 2, 0},

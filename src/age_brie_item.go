@@ -1,7 +1,11 @@
 package src
 
 type AgeBrieItem struct {
-	BaseItem
+	*Item
+}
+
+func NewAgeBrieItem(item *Item) *AgeBrieItem {
+	return &AgeBrieItem{item}
 }
 
 func (i *AgeBrieItem) Update() {
