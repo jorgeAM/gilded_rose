@@ -5,6 +5,40 @@ type Item struct {
 	SellIn, Quality int
 }
 
+type updatableItemCreatorMap map[string]updatableItemCreator
+
+func mapItems(items []*Item) {
+	var mapper updatableItemCreatorMap = map[string]updatableItemCreator{
+		"Aged Brie": func(item *Item) Updater {
+			return NewAgeBrieItem(item)
+		},
+		"+5 Dexterity Vest": func(item *Item) Updater {
+			return NewBaseItem(item)
+		},
+		"Elixir of the Mongoose": func(item *Item) Updater {
+			return NewBaseItem(item)
+		},
+		"Sulfuras, Hand of Ragnaros": func(item *Item) Updater {
+			return NewSulfurasItem(item)
+		},
+		"Backstage passes to a TAFKAL80ETC concert": func(item *Item) Updater {
+			return NewBackstagePassesItem(item)
+		},
+		"Conjured Mana Cake": func(item *Item) Updater {
+			return NewConjuredItem(item)
+		},
+	}
+
+	for _, item := range items {
+		updatableItemFunc := mapper[item.Name]
+
+		updatableItem := updatableItemFunc(item)
+
+		updatableItem.Update()
+	}
+
+}
+
 func UpdateQuality(items []*Item) {
 	for i := 0; i < len(items); i++ {
 
@@ -54,5 +88,7 @@ func UpdateQuality(items []*Item) {
 			}
 		}
 	}
+
+	// mapItems(items)
 
 }
